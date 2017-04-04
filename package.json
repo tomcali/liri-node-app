@@ -24,6 +24,7 @@
   "dependencies": {
     "lodash": "^4.17.4",
     "node-twitter": "^0.5.3",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "spotify": "^0.3.0"
   }
 }

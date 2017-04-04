@@ -10,6 +10,10 @@ var Twitter = require('node-twitter');  // access to Twitter APIs
 // lodash for functional programming methods
 var _ = require('lodash');  // used for manipulating arrays 
 
+// spotify API documentation at https://www.npmjs.com/package/spotify
+// application examples at https://developer.spotify.com/web-api/code-examples/
+var spotify = require('spotify');
+
 // asynchronous read of the keys.js file and show its contents 
 fs.readFile('./utilities/keys.js', 'utf8', function(error, data) {
   // console.log()
@@ -139,8 +143,34 @@ else {
       break;
 
     case 'spotify-this-song':
+      // processing node liri.js spotify-this-song '<song name here>'
       console.log();  // blank line
       console.log('execute spotify-this-song');
+      console.log('process.argv.length:', process.argv.length);
+      if (process.argv.length === 4) {
+        var songTitle = process.argv[3];
+      }
+      else {
+      	var songTitle = 'The Sign';
+      }  
+      spotify.search({ type: 'track', query: songTitle }, function(err, data) {
+        if ( err ) {
+          console.log('Spotify error occurred: ' + err);
+          return;
+        }
+        else {
+          console.log('spotify data received:', data);
+        }
+      });
+
+
+
+
+
+
+
+
+
       break;
 
     case 'movie-this':
