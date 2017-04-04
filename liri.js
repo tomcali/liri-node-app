@@ -176,6 +176,40 @@ else {
     case 'movie-this':
       console.log();  // blank line
       console.log('execute movie-this');
+      console.log('process.argv.length:', process.argv.length);
+      if (process.argv.length === 4) {
+        var movieTitle = process.argv[3];
+      }
+      else {
+      	var movieTitle = 'Mr. Nobody';
+      }  
+      // construct the query string by eliminating punctuation 
+      // and replacing spaces with plus sign and converting to lowercase
+      var movieTitleQuery = movieTitle.replace(/[^A-Za-z0-9\s]/g,"").replace(/\s{2,}/g, " ").replace(/\s+/g, '+').toLowerCase();
+
+      request("http://www.omdbapi.com/?t=" + movieTitleQuery + "&y=&plot=short&r=json", 
+     	function(error, response, body) {
+
+         // If the request is successful (i.e. if the response status code is 200)
+        if (!error && response.statusCode === 200) {
+
+          // Parse the body of the site and recover just the imdbRating
+          // (Note: The syntax below for parsing isn't obvious. Just spend a few moments dissecting it).
+          console.log();
+          console.log('Complete JSON information for movieTitle:');
+          console.log(JSON.parse(body));
+          console.log();
+          console.log('Title of the movie:', JSON.parse(body).Title);
+          console.log('Year the movie came out:', JSON.parse(body).Year);
+          console.log('IMDB Rating of the movie:', JSON.parse(body).imdbRating);
+          console.log('Country where the movie was produced:', JSON.parse(body).Country);
+          console.log('Language of the movie:', JSON.parse(body).Language);
+          console.log('Plot of the movie:', JSON.parse(body).Plot);
+          console.log('Actors in the movie:', JSON.parse(body).Actors);
+          console.log('Rating information:', JSON.parse(body).Ratings); // includes Rotten Tomatoes
+          console.log('Rotten Tomatoes URL:', 'https://www.rottentomatoes.com/');
+        }
+      });
       break;
 
     case 'do-what-it-says':
