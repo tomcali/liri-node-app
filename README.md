@@ -26,5 +26,7 @@ The requirements for this assignment may be found in the file homework_instructi
 - Obtained Twitter credentials
 - Utilize appropriate node packages to complete the tasks required for the assignemnt
 - Set up utilities directory to accommodate user-defined modules... anticipating future node app development work, included set operations as part of this utilities directory (not part of the assignment, but something that will help in  future projects). Utilized index.js approach to this utilities directory.
-- Wrote code needed to read the keys.js file, which set up the twitterKeys object with the appropriate authorization codes for accessing twitter APIs. This work utilized the fs module from the standard node environment and require. Again, we are working with keys.js under the utilities directory.
+- Wrote code needed to read the keys.js file, which set up the twitterKeys object with the appropriate authorization codes for accessing twitter APIs. This work utilized the fs module from the standard node environment and require. Again, we are working with keys.js under the utilities directory. Random integer and set functions were also brought in through require.
+- process.argv() is used to take in command-line arguments, which are subsequently checked for valid values.
+- aA
  
