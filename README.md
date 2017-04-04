@@ -22,7 +22,7 @@ The requirements for this assignment may be found in the file homework_instructi
 ## Coding Process 
 - We start with GitHub, setting up the repository liri-node-app 
 - Clone the repository and set up the files required for this assignment, including .gitignore, keys.js, random.txt, and liri.js 
-- npm init to set up package.json
+- npm init to set up package.json and added packages/modules with --save paramter as in 'npm install request --save' and 'npm install node-twitter --save'
 - Obtained Twitter credentials
 - Utilize appropriate node packages to complete the tasks required for the assignemnt
 - Set up utilities directory to accommodate user-defined modules... anticipating future node app development work, included set operations as part of this utilities directory (not part of the assignment, but something that will help in  future projects). Utilized index.js approach to this utilities directory.

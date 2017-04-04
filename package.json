@@ -20,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/tomcali/liri-node-app/issues"
   },
-  "homepage": "https://github.com/tomcali/liri-node-app"
+  "homepage": "https://github.com/tomcali/liri-node-app",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "node-twitter": "^0.5.3",
+    "request": "^2.81.0"
+  }
 }
