@@ -1,4 +1,4 @@
-console.log('getRandomInt is loaded');
+// console.log('getRandomInt is loaded');
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);

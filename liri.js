@@ -1,4 +1,5 @@
 // assignment for week 10: liri-node-app
+// lots of comments concern console.log output used in development
 
 var fs = require('fs');
 var request = require('request');  // request was installed previously
@@ -11,14 +12,14 @@ var _ = require('lodash');  // used for manipulating arrays
 
 // asynchronous read of the keys.js file and show its contents 
 fs.readFile('./utilities/keys.js', 'utf8', function(error, data) {
-  console.log()
+  // console.log()
   // if read is successful, we list the contents of the file
   // notice that the file has module.exports() for twitterKeys object
   if (!error) {
-  	console.log('successful read of keys.js');
-  	console.log('data from keys.js:')
-    console.log(data);
-    console.log(); // insert blank line between sections of log
+  	// console.log('successful read of keys.js');
+  	// console.log('data from keys.js:')
+    // console.log(data);
+    // console.log(); // insert blank line between sections of log
   }
   // if read is unsuccessful, we report the error
   else {
@@ -31,14 +32,14 @@ fs.readFile('./utilities/keys.js', 'utf8', function(error, data) {
 
 // asynchronous read of the getRandomInt.js file and show its contents 
 fs.readFile('./utilities/random-integer.js', 'utf8', function(error, data) {
-  console.log()
+  // console.log()
   // if read is successful, we list the contents of the file
   // notice that the file has module.exports() for this function/object
   if (!error) {
-  	console.log('successful read of random-integer.js');
-  	console.log('data from random-integer.js:')
-    console.log(data);
-    console.log(); // insert blank line between sections of log
+  	// console.log('successful read of random-integer.js');
+  	// console.log('data from random-integer.js:')
+    // console.log(data);
+    // console.log(); // insert blank line between sections of log
   }
   // if read is unsuccessful, we report the error
   else {
@@ -51,20 +52,20 @@ fs.readFile('./utilities/random-integer.js', 'utf8', function(error, data) {
 
 // initialize global variable/object twitterKeys via require
 var twitterKeys = require('./utilities/keys.js'); 
-console.log(); // insert blank line between sections of log
-console.log('verify that twitterKeys established as JavaScript object:');
-console.log('typeof twitterKeys:', typeof twitterKeys);
-console.log(twitterKeys);
-console.log(); // insert blank line between sections of log
+// console.log(); // insert blank line between sections of log
+// console.log('verify that twitterKeys established as JavaScript object:');
+// console.log('typeof twitterKeys:', typeof twitterKeys);
+// console.log(twitterKeys);
+// console.log(); // insert blank line between sections of log
 
 var getRandomInt = require('./utilities/random-integer.js'); 
-console.log('verify that getRandomInt established as JavaScript object:');
-console.log('typeof getRandomInt:', typeof getRandomInt);
-console.log(getRandomInt);
-console.log('verify that getRandomInt works for generating random integer');
-console.log('generate random integer on [1,29]:', getRandomInt(1,29));
-console.log('generate random integer on [501,599]:', getRandomInt(501,599));
-console.log(); // insert blank line between sections of log
+// console.log('verify that getRandomInt established as JavaScript object:');
+// console.log('typeof getRandomInt:', typeof getRandomInt);
+// console.log(getRandomInt);
+// console.log('verify that getRandomInt works for generating random integer');
+// console.log('generate random integer on [1,29]:', getRandomInt(1,29));
+// console.log('generate random integer on [501,599]:', getRandomInt(501,599));
+// console.log(); // insert blank line between sections of log
 
 // test of set functions from utilities directory
 // curiously, this works without module.exports statements in source file
@@ -72,16 +73,16 @@ var set = require('./utilities/set-functions-to-node.js');
 var setA = new Set([1, 2, 3, 4]);
 var setB = new Set([2, 3]);
 var setC = new Set([3, 4, 5, 6]);
-console.log();
-console.log('Testing set functions:');
-console.log('setA:', setA);
-console.log('setB:', setB);
-console.log('setC:', setC);
-console.log('isSuperset:', setA.isSuperset(setB));
-console.log('setA.union(setC):', setA.union(setC));
-console.log('setA.intersection(setC):', setA.intersection(setC));
-console.log('setA.difference(setC):', setA.difference(setC));
-console.log('setC.difference(setA):', setC.difference(setA));
+// console.log();
+// console.log('Testing set functions:');
+// console.log('setA:', setA);
+// console.log('setB:', setB);
+// console.log('setC:', setC);
+// console.log('isSuperset:', setA.isSuperset(setB));
+// console.log('setA.union(setC):', setA.union(setC));
+// console.log('setA.intersection(setC):', setA.intersection(setC));
+// console.log('setA.difference(setC):', setA.difference(setC));
+// console.log('setC.difference(setA):', setC.difference(setA));
 
 // we are asked to make liri.js so that it accepts one of four 
 // command line arguments, which we put into an array of strings
@@ -100,13 +101,13 @@ if (!validArgvSet.has(operation)) {
 else {
   switch(operation) {
     case 'my-tweets':
-      console.log();  // blank line
-      console.log('execute my-tweets');
-      console.log('twitterKeys:', twitterKeys);
-      console.log('consumer_key:', twitterKeys.twitterKeys.consumer_key);
-      console.log('consumer_key:', twitterKeys.twitterKeys.consumer_secret);
-      console.log('consumer_key:', twitterKeys.twitterKeys.access_token_key);
-      console.log('consumer_key:', twitterKeys.twitterKeys.access_token_secret);
+      // console.log();  // blank line
+      // console.log('execute my-tweets');
+      // console.log('twitterKeys:', twitterKeys);
+      // console.log('consumer_key:', twitterKeys.twitterKeys.consumer_key);
+      // console.log('consumer_key:', twitterKeys.twitterKeys.consumer_secret);
+      // console.log('consumer_key:', twitterKeys.twitterKeys.access_token_key);
+      // console.log('consumer_key:', twitterKeys.twitterKeys.access_token_secret);
       var twitterRestClient = new Twitter.RestClient(
           twitterKeys.twitterKeys.consumer_key,
           twitterKeys.twitterKeys.consumer_secret,
