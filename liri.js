@@ -162,15 +162,6 @@ else {
           console.log('spotify data received:', data);
         }
       });
-
-
-
-
-
-
-
-
-
       break;
 
     case 'movie-this':
@@ -215,6 +206,30 @@ else {
     case 'do-what-it-says':
       console.log();  // blank line
       console.log('execute do-what-it-says');
+      // asynchronous read of the keys.js file and show its contents 
+      fs.readFile('./random.txt', 'utf8', function(error, data) {
+        // console.log()
+        // if read is successful, we list the contents of the file
+        // notice that the file has module.exports() for twitterKeys object
+        if (!error) {
+          console.log('successful read of random.txt');
+  	      console.log('data from random.txt:')
+  	      console.log('typeof data', typeof data);
+          console.log(data);
+          var firstArgument = data.split(',')[0];
+          console.log('firstArgument:', firstArgument);
+          var secondArgument = data.split(',')[1];
+          console.log('secondArgument:', secondArgument);
+          console.log(); // insert blank line between sections of log
+        }
+        // if read is unsuccessful, we report the error
+        else {
+  	      console.log('unsuccessful attempt to read keys.js');
+  	      console.log('this is the error log:');
+  	      console.log(error);
+  	      console.log(); // insert blank line between sections of log
+        }
+      });
       break;
   }; // end switch-block
 
