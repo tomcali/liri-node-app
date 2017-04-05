@@ -14,6 +14,91 @@ var _ = require('lodash');  // used for manipulating arrays
 // application examples at https://developer.spotify.com/web-api/code-examples/
 var spotify = require('spotify');
 
+
+// ---------- FUNCTION runTweets ----------
+function runTweets(twitterKeys) {
+      // console.log();  // blank line
+      // console.log('execute my-tweets');
+      // console.log('twitterKeys:', twitterKeys);
+      // console.log('consumer_key:', twitterKeys.twitterKeys.consumer_key);
+      // console.log('consumer_key:', twitterKeys.twitterKeys.consumer_secret);
+      // console.log('consumer_key:', twitterKeys.twitterKeys.access_token_key);
+      // console.log('consumer_key:', twitterKeys.twitterKeys.access_token_secret);
+      var twitterRestClient = new Twitter.RestClient(
+          twitterKeys.twitterKeys.consumer_key,
+          twitterKeys.twitterKeys.consumer_secret,
+          twitterKeys.twitterKeys.access_token_key,
+          twitterKeys.twitterKeys.access_token_secret
+      );
+      twitterRestClient.statusesHomeTimeline({}, function(error, result) {
+        if (error) {
+          console.log('Error: ' + (error.code ? error.code + ' ' + error.message : error.message));
+        }
+        if (result) {
+          // console.log(result); // this would provide the entire set of tweets
+          console.log();  // blank line
+          // console.log('total number of tweets retrieved:', result.length);
+          // console.log('examine structure of last tweet:', result.slice(-1));
+          var twentyTweets = _.takeRight(result, 20); // last twenty tweets a la lodash
+          // console.log('check length of twentyTweets', twentyTweets.length) 
+          // build array of JSON objects with create_at and text values
+          tweetsToDisplay = []; // declares array 
+          console.log('Last twenty tweets and when they were created:')
+          for (var i=0; i<twentyTweets.length; i++) {
+            tweetsToDisplay.push({'created_at': twentyTweets[i].created_at,
+              'text': twentyTweets[i].text});
+          }
+          console.log(tweetsToDisplay);
+          console.log();  // blank line
+        }
+      });
+}  // end function runTweets
+
+// ---------- FUNCTION runMovie ----------
+function runMovie(movieTitle) {
+      // construct the query string by eliminating punctuation 
+      // and replacing spaces with plus sign and converting to lowercase
+      var movieTitleQuery = movieTitle.replace(/[^A-Za-z0-9\s]/g,"").replace(/\s{2,}/g, " ").replace(/\s+/g, '+').toLowerCase();
+
+      request("http://www.omdbapi.com/?t=" + movieTitleQuery + "&y=&plot=short&r=json", 
+      function(error, response, body) {
+
+         // If the request is successful (i.e. if the response status code is 200)
+        if (!error && response.statusCode === 200) {
+
+          // Parse the body of the site and recover just the imdbRating
+          // (Note: The syntax below for parsing isn't obvious. Just spend a few moments dissecting it).
+          console.log();
+          console.log('Complete JSON information for movieTitle:');
+          console.log(JSON.parse(body));
+          console.log();
+          console.log('Title of the movie:', JSON.parse(body).Title);
+          console.log('Year the movie came out:', JSON.parse(body).Year);
+          console.log('IMDB Rating of the movie:', JSON.parse(body).imdbRating);
+          console.log('Country where the movie was produced:', JSON.parse(body).Country);
+          console.log('Language of the movie:', JSON.parse(body).Language);
+          console.log('Plot of the movie:', JSON.parse(body).Plot);
+          console.log('Actors in the movie:', JSON.parse(body).Actors);
+          console.log('Rating information:', JSON.parse(body).Ratings); // includes Rotten Tomatoes
+          console.log('Rotten Tomatoes URL:', 'https://www.rottentomatoes.com/');
+          console.log();
+        }
+      });
+}  // end function runMovie
+
+// ---------- FUNCTION runSpotify ----------
+function runSpotify(songTitle) {
+      spotify.search({ type: 'track', query: songTitle }, function(err, data) {
+        if ( err ) {
+          console.log('Spotify error occurred: ' + err);
+          return;
+        }
+        else {
+          console.log('spotify data received:', data);
+        }
+      });
+}  // end function runSpotify
+
 // asynchronous read of the keys.js file and show its contents 
 fs.readFile('./utilities/keys.js', 'utf8', function(error, data) {
   // console.log()
@@ -105,41 +190,7 @@ if (!validArgvSet.has(operation)) {
 else {
   switch(operation) {
     case 'my-tweets':
-      // console.log();  // blank line
-      // console.log('execute my-tweets');
-      // console.log('twitterKeys:', twitterKeys);
-      // console.log('consumer_key:', twitterKeys.twitterKeys.consumer_key);
-      // console.log('consumer_key:', twitterKeys.twitterKeys.consumer_secret);
-      // console.log('consumer_key:', twitterKeys.twitterKeys.access_token_key);
-      // console.log('consumer_key:', twitterKeys.twitterKeys.access_token_secret);
-      var twitterRestClient = new Twitter.RestClient(
-          twitterKeys.twitterKeys.consumer_key,
-          twitterKeys.twitterKeys.consumer_secret,
-          twitterKeys.twitterKeys.access_token_key,
-          twitterKeys.twitterKeys.access_token_secret
-      );
-      twitterRestClient.statusesHomeTimeline({}, function(error, result) {
-        if (error) {
-          console.log('Error: ' + (error.code ? error.code + ' ' + error.message : error.message));
-        }
-        if (result) {
-          // console.log(result); // this would provide the entire set of tweets
-          console.log();  // blank line
-          // console.log('total number of tweets retrieved:', result.length);
-          // console.log('examine structure of last tweet:', result.slice(-1));
-          var twentyTweets = _.takeRight(result, 20); // last twenty tweets a la lodash
-          // console.log('check length of twentyTweets', twentyTweets.length) 
-          // build array of JSON objects with create_at and text values
-          tweetsToDisplay = []; // declares array 
-          console.log('Last twenty tweets and when they were created:')
-          for (var i=0; i<twentyTweets.length; i++) {
-            tweetsToDisplay.push({'created_at': twentyTweets[i].created_at,
-              'text': twentyTweets[i].text});
-          }
-          console.log(tweetsToDisplay);
-          console.log();  // blank line
-        }
-      });
+      runTweets(twitterKeys);
       break;
 
     case 'spotify-this-song':
@@ -152,16 +203,9 @@ else {
       }
       else {
       	var songTitle = 'The Sign';
-      }  
-      spotify.search({ type: 'track', query: songTitle }, function(err, data) {
-        if ( err ) {
-          console.log('Spotify error occurred: ' + err);
-          return;
-        }
-        else {
-          console.log('spotify data received:', data);
-        }
-      });
+      } 
+      runSpotify(songTitle); 
+
       break;
 
     case 'movie-this':
@@ -174,33 +218,7 @@ else {
       else {
       	var movieTitle = 'Mr. Nobody';
       }  
-      // construct the query string by eliminating punctuation 
-      // and replacing spaces with plus sign and converting to lowercase
-      var movieTitleQuery = movieTitle.replace(/[^A-Za-z0-9\s]/g,"").replace(/\s{2,}/g, " ").replace(/\s+/g, '+').toLowerCase();
-
-      request("http://www.omdbapi.com/?t=" + movieTitleQuery + "&y=&plot=short&r=json", 
-     	function(error, response, body) {
-
-         // If the request is successful (i.e. if the response status code is 200)
-        if (!error && response.statusCode === 200) {
-
-          // Parse the body of the site and recover just the imdbRating
-          // (Note: The syntax below for parsing isn't obvious. Just spend a few moments dissecting it).
-          console.log();
-          console.log('Complete JSON information for movieTitle:');
-          console.log(JSON.parse(body));
-          console.log();
-          console.log('Title of the movie:', JSON.parse(body).Title);
-          console.log('Year the movie came out:', JSON.parse(body).Year);
-          console.log('IMDB Rating of the movie:', JSON.parse(body).imdbRating);
-          console.log('Country where the movie was produced:', JSON.parse(body).Country);
-          console.log('Language of the movie:', JSON.parse(body).Language);
-          console.log('Plot of the movie:', JSON.parse(body).Plot);
-          console.log('Actors in the movie:', JSON.parse(body).Actors);
-          console.log('Rating information:', JSON.parse(body).Ratings); // includes Rotten Tomatoes
-          console.log('Rotten Tomatoes URL:', 'https://www.rottentomatoes.com/');
-        }
-      });
+      runMovie(movieTitle);
       break;
 
     case 'do-what-it-says':
@@ -234,17 +252,4 @@ else {
   }; // end switch-block
 
 } // end else-block processing of a valid command
-
-
-
-
-
-
-
-
- 
-
-
-
-
 
