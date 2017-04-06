@@ -95,7 +95,11 @@ function runSpotify(songTitle) {
       console.log('Spotify error occurred: ' + err);
       return;
     } else {
-      console.log('spotify data received:', data);
+      console.log('spotify data received:', JSON.stringify(data));
+      console.log('Artist(s):', data.tracks.items[0].album.artists[0].name);
+      console.log('Song:', data.tracks.items[0].album.name);
+      console.log('Preview link:\n', data.tracks.items[0].album.preview_url);
+      console.log('Album:', data.tracks.items[0].album.name);
     }
   });
 } // end function runSpotify
@@ -207,7 +211,10 @@ if (!validArgvSet.has(operation)) {
       if (process.argv.length === 4) {
         var songTitle = process.argv[3];
       } else {
-        var songTitle = 'The Sign';
+        // no success with suggested title "The Sign" by Ace of Base
+        // so used example from spotify API documentation
+        // and Blondie song title 'heart of glass'
+        var songTitle = 'heart of glass';
       }
       runSpotify(songTitle);
 
@@ -261,7 +268,10 @@ if (!validArgvSet.has(operation)) {
                 if (secondArgument.length > 0) {
                   var songTitle = secondArgument;
                 } else {
-                  var songTitle = 'The Sign';
+                    // no success with suggested title "The Sign" by Ace of Base
+                    // so used example from spotify API documentation
+                    // and Blondie song title 'heart of glass'
+                    var songTitle = 'heart of glass';
                 }
                 runSpotify(songTitle);
                 break; // end spotify-this-song within do-what-it-says
