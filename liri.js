@@ -12,6 +12,7 @@ var _ = require('lodash'); // used for manipulating arrays
 
 // spotify API documentation at https://www.npmjs.com/package/spotify
 // application examples at https://developer.spotify.com/web-api/code-examples/
+// see spotify-data-example.json to review the structure of the data retrieved
 var spotify = require('spotify');
 
 
@@ -71,9 +72,9 @@ function runMovie(movieTitle) {
         // Parse the body of the site and recover just the imdbRating
         // (Note: The syntax below for parsing isn't obvious. Just spend a few moments dissecting it).
         console.log();
-        console.log('Complete JSON information for movieTitle:');
-        console.log(JSON.parse(body));
-        console.log();
+        // console.log('Complete JSON information for movieTitle:');
+        // console.log(JSON.parse(body));
+        // console.log();
         console.log('Title of the movie:', JSON.parse(body).Title);
         console.log('Year the movie came out:', JSON.parse(body).Year);
         console.log('IMDB Rating of the movie:', JSON.parse(body).imdbRating);
@@ -95,10 +96,10 @@ function runSpotify(songTitle) {
       console.log('Spotify error occurred: ' + err);
       return;
     } else {
-      console.log('spotify data received:', JSON.stringify(data));
+      // console.log('spotify data received:', JSON.stringify(data));
       console.log('Artist(s):', data.tracks.items[0].album.artists[0].name);
-      console.log('Song:', data.tracks.items[0].album.name);
-      console.log('Preview link:\n', data.tracks.items[0].album.preview_url);
+      console.log('Song:', data.tracks.items[0].name);
+      console.log('Preview link:\n', data.tracks.items[0].preview_url);
       console.log('Album:', data.tracks.items[0].album.name);
     }
   });
