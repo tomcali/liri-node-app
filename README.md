@@ -37,4 +37,22 @@ The requirements for this assignment may be found in the file homework_instructi
 * Ran a few test of the various functions.
 * Added logging to an external text file log.txt as an option. The logToFile Boolean toggle controls this option.  
 
- 
+## Application Testing
+
+We tested the liri-node-app by entering the following commands in sequence:
+
+node liri.js my-tweets
+
+node liri.js spotify-this-song
+
+node liri.js spotify-this-song 'Breakfast in America' 
+node liri.js movie-this 
+
+node liri.js movie-this  
+    
+node liri.js movie-this 'Chinatown'
+
+node liri.js do-what-it-says 
+
+These statements created the log.txt file, which was stored in the repository liri-node-app
+

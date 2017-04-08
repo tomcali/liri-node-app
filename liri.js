@@ -110,7 +110,28 @@ function runMovie(movieTitle) {
         console.log('Rating information:', JSON.parse(body).Ratings); // includes Rotten Tomatoes
         console.log('Rotten Tomatoes URL:', 'https://www.rottentomatoes.com/');
         console.log();
-      }
+
+        if (logToFile) {
+          logToFileHelper('./log.txt', 
+            '\nTitle of the movie:' + JSON.parse(body).Title);
+          logToFileHelper('./log.txt', 
+            '\nYear the movie came out:' + JSON.parse(body).Year);
+          logToFileHelper('./log.txt', 
+            '\nIMDB Rating of the movie:' + JSON.parse(body).imdbRating);
+          logToFileHelper('./log.txt', 
+            '\nCountry where the movie was produced:' + JSON.parse(body).Country);
+          logToFileHelper('./log.txt', 
+            '\nLanguage of the movie:' + JSON.parse(body).Language);
+          logToFileHelper('./log.txt', 
+            '\nPlot of the movie:' + JSON.parse(body).Plot);
+          logToFileHelper('./log.txt', 
+            '\nActors in the movie:' + JSON.parse(body).Actor);
+          logToFileHelper('./log.txt', 
+            '\nRating information:' + JSON.parse(body).Ratings);
+          logToFileHelper('./log.txt', 
+            '\nRotten Tomatoes URL:' + 'https://www.rottentomatoes.com/');
+        };
+      };
     });
 } // end function runMovie
 
@@ -126,6 +147,17 @@ function runSpotify(songTitle) {
       console.log('Song:', data.tracks.items[0].name);
       console.log('Preview link:\n', data.tracks.items[0].preview_url);
       console.log('Album:', data.tracks.items[0].album.name);
+
+      if (logToFile) {
+        logToFileHelper('./log.txt', 
+          '\nArtist(s):' + data.tracks.items[0].album.artists[0].name);
+        logToFileHelper('./log.txt', 
+           '\nSong:' + data.tracks.items[0].name);
+        logToFileHelper('./log.txt', 
+            '\nPreview link:\n' + data.tracks.items[0].preview_url);
+        logToFileHelper('./log.txt', 
+           '\nAlbum:' + data.tracks.items[0].album.name);
+        };
     }
   });
 } // end function runSpotify

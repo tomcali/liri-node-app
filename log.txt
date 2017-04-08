@@ -3,6 +3,55 @@
 Last twenty tweets and when they were created:[{"created_at":"Thu Apr 06 21:03:01 +0000 2017","text":"Hats off to our #tapintotwitter @TwitterDev 🌍 community for your honest &amp; ongoing feedback. We couldn't have done t… https://t.co/55Aqmmv4P3"},{"created_at":"Thu Apr 06 15:57:44 +0000 2017","text":"Big thanks to @SlackHQ, @Buffer, @Trello and the many others paving the way to better transparency for developers with public roadmaps."},{"created_at":"Thu Apr 06 15:26:46 +0000 2017","text":"Find deals, check flight status, ask AutoPilot questions, talk to a rep and more in @United’s travel exploring Dire… https://t.co/tTmYjk8Tbd"},{"created_at":"Thu Apr 06 15:25:44 +0000 2017","text":"3/ Developers can now access new APIs to create human and bot-powered experiences in Direct Messages. #CarpeDM https://t.co/SbZ347JT57"},{"created_at":"Thu Apr 06 15:24:47 +0000 2017","text":"2/ In the spirit of transparency and clarity, we’re publishing a product roadmap that we’ll maintain moving forward. https://t.co/OZp9BgxxBO"},{"created_at":"Thu Apr 06 15:24:15 +0000 2017","text":"1/ Today we’re sharing our vision for the future of the Twitter API platform!\nhttps://t.co/XweGngmxlP"},{"created_at":"Wed Apr 05 17:18:21 +0000 2017","text":"RT @GoCodeColorado: Hope to see you at #GoCodeCO Challenge Weekend April 7-9. Register now to compete w/us: https://t.co/6L9c0ROGoV https:/…"},{"created_at":"Wed Apr 05 16:51:58 +0000 2017","text":"Hope to see you this weekend for #GoCodeCO!  We'll be helping teams build 💯 apps. Come w/ questions, dm us, or let'… https://t.co/4IiHvbV2j7"},{"created_at":"Mon Apr 03 16:08:46 +0000 2017","text":"RT @TwitterMktg: Starting today, businesses can request and share locations when engaging with people in Direct Messages. https://t.co/rpYn…"},{"created_at":"Thu Mar 30 17:30:11 +0000 2017","text":"Developers, find our updated technical docs &amp; display guidance for new replies experience via our announcement here https://t.co/YciSpV2uPO"},{"created_at":"Thu Mar 23 20:32:06 +0000 2017","text":"Happy #NationalPuppyDay! Here are puppy breeds that Twitter talks about most:\n1️⃣Lab\n2️⃣Golden Retriever\n3️⃣Corgi\n4️⃣Dalmatian\n5️⃣Bulldog"},{"created_at":"Thu Mar 23 20:29:57 +0000 2017","text":"The 🐶 emoji was used in ~70 million Tweets in the past year &amp; people Tweeted that they \"want a puppy\" ~1 million times. #NationalPuppyDay"},{"created_at":"Thu Mar 23 19:05:19 +0000 2017","text":"Hear from @kayvz more about the new Periscope Producer API, and what it can do. Watch the replay! https://t.co/Qsk3OJHFuH"},{"created_at":"Wed Mar 22 02:36:23 +0000 2017","text":"#tapintotwitter panel - mobile products and monetization https://t.co/JHd3PMp4Y0"},{"created_at":"Wed Mar 22 01:40:53 +0000 2017","text":"What goes better with rain? Learning about Ads &amp; Data with 🍕🍪 from @StellaBarraSM @TwitterLA #tapintotwitter https://t.co/PYkdJFC0ax"},{"created_at":"Tue Mar 21 16:56:37 +0000 2017","text":"RT @mopub: #LA, don't miss this event tonight with MoPub &amp; @TwitterDev, hosted at @TwitterLA. Ads, data, monetization, mobile! https://t.co…"},{"created_at":"Tue Mar 21 16:07:32 +0000 2017","text":"Introducing the Periscope Producer API - a new way to go LIVE! 🎥 https://t.co/37izQyfAVZ"},{"created_at":"Tue Mar 21 00:37:45 +0000 2017","text":"Happening tomorrow @TwitterLA! 🎬We'll be talking @mopub &amp; have some incredible speakers lined up. See you soon… https://t.co/WFfa3nDBLR"},{"created_at":"Fri Mar 17 03:34:36 +0000 2017","text":"RT @ericmbudd: relevant to my interests and social experiments—@juanshishido talks about applications for the ads API at @TwitterBoulder ht…"},{"created_at":"Fri Mar 17 03:21:37 +0000 2017","text":"RT @gegere: Learning more about twitter @ twitter #TapIntoTwitter https://t.co/VlqKFJzhfn"}]
 
 
+Artist(s):Blondie
+Song:Heart Of Glass
+Preview link:
+https://p.scdn.co/mp3-preview/7ab07b0f7d8da154fead0fd21788909b588974d3?cid=null
+Album:Best Of Blondie
 
 
+Artist(s):Supertramp
+Song:The Logical Song - 2010 Remastered
+Preview link:
+https://p.scdn.co/mp3-preview/1f0a6e3df9b8d4f75e148d9ee3cdefd8e9e134e5?cid=null
+Album:Breakfast In America (Deluxe Edition)
 
+
+Title of the movie:Mr. Nobody
+Year the movie came out:2009
+IMDB Rating of the movie:7.9
+Country where the movie was produced:Belgium, Germany, Canada, France
+Language of the movie:English, Mohawk
+Plot of the movie:A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.
+Actors in the movie:undefined
+Rating information:[object Object],[object Object],[object Object]
+Rotten Tomatoes URL:https://www.rottentomatoes.com/
+
+
+Title of the movie:Mr. Nobody
+Year the movie came out:2009
+IMDB Rating of the movie:7.9
+Country where the movie was produced:Belgium, Germany, Canada, France
+Language of the movie:English, Mohawk
+Plot of the movie:A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.
+Actors in the movie:undefined
+Rating information:[object Object],[object Object],[object Object]
+Rotten Tomatoes URL:https://www.rottentomatoes.com/
+
+
+Title of the movie:Chinatown
+Year the movie came out:1974
+IMDB Rating of the movie:8.2
+Country where the movie was produced:USA
+Language of the movie:English, Cantonese, Spanish
+Plot of the movie:A private detective hired to expose an adulterer finds himself caught up in a web of deceit, corruption and murder.
+Actors in the movie:undefined
+Rating information:[object Object],[object Object],[object Object]
+Rotten Tomatoes URL:https://www.rottentomatoes.com/
+
+
+Artist(s):Backstreet Boys
+Song:I Want It That Way
+Preview link:
+https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=null
+Album:The Hits--Chapter One
