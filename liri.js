@@ -15,6 +15,17 @@ var _ = require('lodash'); // used for manipulating arrays
 // see spotify-data-example.json to review the structure of the data retrieved
 var spotify = require('spotify');
 
+// Boolean global toggle regarding logging to external file log.txt
+var logToFile = true;
+
+// helper function for logging to external file log.txt
+function logToFileHelper(file, textData) {
+  fs.appendFile(file, textData, 'utf8', function(err) {
+    if (err) throw err;
+    console.log('error in logging to ./log.txt');
+  });
+}
+
 
 // ---------- FUNCTION runTweets ----------
 function runTweets(twitterKeys) {
@@ -33,8 +44,13 @@ function runTweets(twitterKeys) {
   );
   twitterRestClient.statusesHomeTimeline({}, function(error, result) {
     if (error) {
-      console.log('Error: ' + (error.code ? error.code + ' ' + error.message : error.message));
-    }
+      var errorMessage = "'Error: ' + (error.code ? error.code + ' ' + error.message : error.message)"
+      console.log(errorMessage);
+      if (logToFile) {
+        logToFileHelper('./log.txt', errorMessage);
+        console.log('appended runTweets errorMessage to log.txt');
+      };
+    };
     if (result) {
       // console.log(result); // this would provide the entire set of tweets
       console.log(); // blank line
@@ -44,15 +60,23 @@ function runTweets(twitterKeys) {
       // console.log('check length of twentyTweets', twentyTweets.length) 
       // build array of JSON objects with create_at and text values
       tweetsToDisplay = []; // declares array 
-      console.log('Last twenty tweets and when they were created:')
-      for (var i = 0; i < twentyTweets.length; i++) {
-        tweetsToDisplay.push({
-          'created_at': twentyTweets[i].created_at,
-          'text': twentyTweets[i].text
-        });
-      }
-      console.log(tweetsToDisplay);
-      console.log(); // blank line
+      var runTweetsHeader = "Last twenty tweets and when they were created:"
+      console.log(runTweetsHeader);
+      if (logToFile) {
+        logToFileHelper('./log.txt', runTweetsHeader);
+        console.log('appended runTweetsHeader to log.txt');
+      };
+    };
+    for (var i = 0; i < twentyTweets.length; i++) {
+      tweetsToDisplay.push({
+        'created_at': twentyTweets[i].created_at,
+        'text': twentyTweets[i].text
+      });
+    }
+    console.log(tweetsToDisplay);
+    console.log(); // blank line
+    if (logToFile) {
+      logToFileHelper('./log.txt', JSON.stringify(tweetsToDisplay));
     }
   });
 } // end function runTweets
@@ -198,10 +222,17 @@ if (!validArgvSet.has(operation)) {
   console.log(); // blank line
   console.log('Invalid command. node liri.js requires one of four commands:');
   console.log(validArgvSet);
-} else {
+} else { // begin else-block for valid command entered
   switch (operation) { // begin major/outside switch statement
     case 'my-tweets':
+      if (logToFile) console.time('myTweetsTime');
       runTweets(twitterKeys);
+      if (logToFile) {
+        var myTweetsTime = console.timeEnd('myTweetsTime');
+
+        logToFileHelper('./log.txt', myTweetsTime);
+        console.log('appended myTweetsTime to log.txt');
+      };
       break;
 
     case 'spotify-this-song':
@@ -218,7 +249,6 @@ if (!validArgvSet.has(operation)) {
         var songTitle = 'heart of glass';
       }
       runSpotify(songTitle);
-
       break;
 
     case 'movie-this':
@@ -269,10 +299,10 @@ if (!validArgvSet.has(operation)) {
                 if (secondArgument.length > 0) {
                   var songTitle = secondArgument;
                 } else {
-                    // no success with suggested title "The Sign" by Ace of Base
-                    // so used example from spotify API documentation
-                    // and Blondie song title 'heart of glass'
-                    var songTitle = 'heart of glass';
+                  // no success with suggested title "The Sign" by Ace of Base
+                  // so used example from spotify API documentation
+                  // and Blondie song title 'heart of glass'
+                  var songTitle = 'heart of glass';
                 }
                 runSpotify(songTitle);
                 break; // end spotify-this-song within do-what-it-says
@@ -289,7 +319,7 @@ if (!validArgvSet.has(operation)) {
                 runMovie(movieTitle);
                 break; // end movie-this within do-what-it-says
 
-            } // end valid read switch within do-what it says
+            } // end valid read switch within do-what-it-says
 
           } // end else-block switch processing of the valid command do-what-it-says
           // if read is unsuccessful, we report the error
@@ -303,5 +333,5 @@ if (!validArgvSet.has(operation)) {
         }
       }); // end read random.txt file
       break; // end of last case statement... do-what-it-says
-  }; // end outside/major switch statement
+  }; // begin else-block for valid command entered
 } // end of else statement corresponding to successful operation
