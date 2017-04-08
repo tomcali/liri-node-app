@@ -21,11 +21,12 @@ var logToFile = true;
 // helper function for logging to external file log.txt
 function logToFileHelper(file, textData) {
   fs.appendFile(file, textData, 'utf8', function(err) {
-    if (err) throw err;
-    console.log('error in logging to ./log.txt');
+    if (err) {
+      throw err;
+      console.log('log file writing error reported to log.txt');
+    };
   });
 }
-
 
 // ---------- FUNCTION runTweets ----------
 function runTweets(twitterKeys) {
@@ -225,18 +226,14 @@ if (!validArgvSet.has(operation)) {
 } else { // begin else-block for valid command entered
   switch (operation) { // begin major/outside switch statement
     case 'my-tweets':
-      if (logToFile) console.time('myTweetsTime');
+      logToFileHelper('./log.txt', '\n\n');
       runTweets(twitterKeys);
-      if (logToFile) {
-        var myTweetsTime = console.timeEnd('myTweetsTime');
-
-        logToFileHelper('./log.txt', myTweetsTime);
-        console.log('appended myTweetsTime to log.txt');
-      };
+      if (logToFile) console.log('appended results of my-tweets to log.txt');
       break;
 
     case 'spotify-this-song':
       // processing node liri.js spotify-this-song '<song name here>'
+      logToFileHelper('./log.txt', '\n\n');
       console.log(); // blank line
       console.log('execute spotify-this-song');
       console.log('process.argv.length:', process.argv.length);
@@ -249,9 +246,11 @@ if (!validArgvSet.has(operation)) {
         var songTitle = 'heart of glass';
       }
       runSpotify(songTitle);
+      if (logToFile) console.log('appended results of spotify-this-song to log.txt');    
       break;
 
     case 'movie-this':
+      logToFileHelper('./log.txt', '\n\n');
       console.log(); // blank line
       console.log('execute movie-this');
       console.log('process.argv.length:', process.argv.length);
@@ -261,9 +260,11 @@ if (!validArgvSet.has(operation)) {
         var movieTitle = 'Mr. Nobody';
       }
       runMovie(movieTitle);
+      if (logToFile) console.log('appended results of movie-this to log.txt');        
       break;
 
     case 'do-what-it-says':
+      logToFileHelper('./log.txt', '\n\n');
       console.log(); // blank line
       console.log('execute do-what-it-says');
       // asynchronous read of the keys.js file and show its contents 
@@ -332,6 +333,7 @@ if (!validArgvSet.has(operation)) {
           console.log(); // insert blank line between sections of log
         }
       }); // end read random.txt file
+      if (logToFile) console.log('appended results of do-what-it-says to log.txt');         
       break; // end of last case statement... do-what-it-says
   }; // begin else-block for valid command entered
 } // end of else statement corresponding to successful operation

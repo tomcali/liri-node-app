@@ -35,6 +35,6 @@ The requirements for this assignment may be found in the file homework_instructi
 * process.argv() is used to take in command-line arguments, which are subsequently checked for valid values.
 * Set up the control flow for executing various liri methods, including twitter, spotify, OMDB, and random.
 * Ran a few test of the various functions.
-* Added logging to an external text file log.txt as an option. The logToFile Boolean toggle controls this option. We added a timing feature to the log to show how long things take to process.  
+* Added logging to an external text file log.txt as an option. The logToFile Boolean toggle controls this option.  
 
  
